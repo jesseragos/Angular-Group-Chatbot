@@ -2,7 +2,7 @@
   "name": "bot-and-pusher",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "ng build --prod",
+    "postinstall": "ng build --env=prod",
     "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "start": "node server.js",
