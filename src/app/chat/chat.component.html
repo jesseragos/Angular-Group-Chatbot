@@ -58,7 +58,7 @@
     />
     <button
       [disabled]="!message || sending"
-      (click)="sendMessage(message)"
+      (click)="sendMessage(message, false)"
       class="btn primary"
     >
       <span *ngIf="sending; then loadingSendChat; else sendChat"></span>
