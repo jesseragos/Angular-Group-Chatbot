@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --main: #26a69a;
+  --received: #ccdce4;
+  --botReceived: #467790;
+}
+
+.box-shadow {
+  box-shadow: 0rem 0.2rem 0.9rem rgba(0, 0, 0, 0.13);
+}
+
+.primary {
+  background-color: var(--main) !important;
+  color: white !important;
+}
+
+.bot {
+  background-color: var(--botReceived) !important;
+  color: white !important;
+}
+
+.botMessage {
+  color: #2283b5 !important;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.btn {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.navTitle {
+  font-size: 1.5em;
+  font-weight: 600;
+}

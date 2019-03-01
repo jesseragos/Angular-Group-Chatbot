@@ -1,0 +1,86 @@
+<!-- src/app/chat/chat.component.html -->
+
+<h6 class="pb-2 mb-0 text-center">
+  Group Chat
+</h6>
+<small class="instruction">
+  Chat to group or to 'Jess the ChatBot'
+</small>
+<small _ngcontent-c1="" class="instruction"> 
+  Try to send "How are you" to the chatbot
+</small>
+
+<div class="chats">
+  <div #scrollMe class="chatbox">
+    <div *ngFor="let chat of chats">
+      <div class="message sent" *ngIf="chat.type !== 'joined' && chat.isMe">
+        {{ chat.message }}
+        <span class="metadata">
+          <span class="time">{{ chat.createdAt | date: "hh:mm a" }}</span>
+        </span>
+      </div>
+      <div>
+        <span
+          class="message received"
+          *ngIf="chat.type !== 'joined' && !chat.isMe"
+        >
+          <i
+            class="fas fa-robot botMessage mr-2"
+            *ngIf="isBot(chat.displayName)"
+          ></i>
+          <strong>
+            {{ isBot(chat.displayName) ? botDisplayName : chat.displayName }}
+          </strong>
+
+          <br />
+          {{ chat.message }}
+          <span class="metadata">
+            <span class="time">{{ chat.createdAt | date: "hh:mm a" }}</span>
+          </span>
+        </span>
+      </div>
+      <p align="center" class="joined" *ngIf="chat.type === 'joined'">
+        <span class="badge badge-pill joinedNotif"
+          >{{ chat.displayName }} has joined the chat</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <div class="d-flex flex-row">
+    <!-- <div class="chatBox-float"> -->
+    <input
+      [(ngModel)]="message"
+      type="text"
+      class="form-control"
+      placeholder="Enter message"
+      style="margin-right: 10px"
+    />
+    <button
+      [disabled]="!message || sending"
+      (click)="sendMessage(message)"
+      class="btn primary"
+    >
+      <span *ngIf="sending; then loadingSendChat; else sendChat"></span>
+      <ng-template #loadingSendChat>
+        <i class="fas fa-spinner"></i>
+      </ng-template>
+      <ng-template #sendChat>
+        <i class="fas fa-paper-plane"></i>
+      </ng-template>
+    </button>
+    <button
+      [disabled]="!message || sending"
+      (click)="sendMessage(message, true)"
+      class="btn bot"
+    >
+      <span *ngIf="sending; then loadingSendBot; else sendBot"></span>
+      <ng-template #loadingSendBot>
+        <i class="fas fa-spinner"></i>
+      </ng-template>
+      <ng-template #sendBot>
+        <i class="fas fa-robot"></i>
+      </ng-template>
+    </button>
+  </div>
+</div>
