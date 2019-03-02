@@ -4,13 +4,13 @@ import { PusherService } from "./pusher.service";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
+import { environment } from "./../../environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class ChatService {
   user: { displayName: string; email: string };
-  private _endPoint = "http://localhost:8080"; // normally you use environment.ts
   private _channel: any;
 
   constructor(
@@ -22,7 +22,7 @@ export class ChatService {
   }
 
   join(param): Observable<any> {
-    return this._http.post("join", param).pipe(
+    return this._http.post(`${environment.apiUrl}/join`, param).pipe(
       tap(data => {
         this.user = param;
       })
@@ -35,7 +35,7 @@ export class ChatService {
       type: "human",
       ...this.user
     };
-    return this._http.post("message", param);
+    return this._http.post(`${environment.apiUrl}/message`, param);
   }
 
   getChannel() {
