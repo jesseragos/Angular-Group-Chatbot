@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 5000;
+const PORT = 2000;
 const appName = "botAndPusher";
 const distPath = `/dist/${appName}`;
 
