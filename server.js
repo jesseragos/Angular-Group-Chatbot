@@ -1,4 +1,4 @@
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const appName = "botAndPusher";
 const distPath = `/dist/${appName}`;
 
@@ -77,4 +77,5 @@ if (process.env.NG_ENV === "production") {
   });
 }
 
-app.listen(PORT, () => console.log(`Listening at Port: ${PORT}`));
+const IP = process.env.IP;
+app.listen(PORT, () => console.log(`Listening at IP: ${IP} | Port: ${PORT}`));
