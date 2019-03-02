@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 const appName = "botAndPusher";
 const distPath = `/dist/${appName}`;
 
@@ -71,11 +71,10 @@ app.post("/join", (req, res) => {
 if (process.env.NG_ENV === "production") {
   // Serve any static files
   app.use(express.static(path.join(__dirname, distPath)));
-  // Handle React routing, return all requests to React app
+  // Handle routing, return all requests to app
   app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, distPath, "index.html"));
   });
 }
 
-const IP = process.env.IP;
-app.listen(PORT, () => console.log(`Listening at IP: ${IP} | Port: ${PORT}`));
+app.listen(PORT, () => console.log(`Listening at Port: ${PORT}`));
