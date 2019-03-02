@@ -6,13 +6,13 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const Pusher = require("pusher");
-const cors = require("cors");
+// const cors = require("cors");
 require("dotenv").config();
 const shortId = require("shortid");
 const dialogFlow = require("./dialogFlow");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
